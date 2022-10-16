@@ -1369,7 +1369,7 @@ export class WebsocketClient extends EventEmitter {
     /**
    * Subscribe to 24hr ticker for different symbols in any market.
    */
-     public subscribeSymbols24hrTickers(
+  public subscribeSymbols24hrTickers(
       market: 'spot' | 'usdm' | 'coinm',
       symbols: string[],
       forceNewConnection?: boolean
@@ -1377,7 +1377,7 @@ export class WebsocketClient extends EventEmitter {
       const streamName = 'ticker';
       const wsKey = getWsKeyWithContext(market, streamName);
       return this.connectToWsUrl(
-        this.getWsBaseUrl(market, wsKey) + `/ws/${symbols}`,
+        this.getWsBaseUrl(market, wsKey) + `/${symbols}`,
         wsKey,
         forceNewConnection
       );
