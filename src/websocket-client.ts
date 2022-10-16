@@ -1366,6 +1366,23 @@ export class WebsocketClient extends EventEmitter {
     );
   }
 
+    /**
+   * Subscribe to 24hr ticker for different symbols in any market.
+   */
+     public subscribeSymbols24hrTickers(
+      market: 'spot' | 'usdm' | 'coinm',
+      symbols: string[],
+      forceNewConnection?: boolean
+    ): WebSocket {
+      const streamName = 'ticker';
+      const wsKey = getWsKeyWithContext(market, streamName);
+      return this.connectToWsUrl(
+        this.getWsBaseUrl(market, wsKey) + `/ws/${symbols}`,
+        wsKey,
+        forceNewConnection
+      );
+    }
+
   /**
    * Subscribe to best bid/ask for symbol in spot markets.
    */
@@ -1841,6 +1858,8 @@ export class WebsocketClient extends EventEmitter {
       this.emit('error', { wsKey: 'usdm' + '_' + 'userData', error: e });
     }
   }
+
+  public async subscribeCombinedStreamTicker()
 
   // TODO: coinm futures, options; once rest clients are implemented
 
