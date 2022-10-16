@@ -1859,8 +1859,6 @@ export class WebsocketClient extends EventEmitter {
     }
   }
 
-  public async subscribeCombinedStreamTicker()
-
   // TODO: coinm futures, options; once rest clients are implemented
 
   //   /**
