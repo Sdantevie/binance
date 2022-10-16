@@ -1377,7 +1377,7 @@ export class WebsocketClient extends EventEmitter {
       const streamName = 'ticker';
       const wsKey = getWsKeyWithContext(market, streamName);
       return this.connectToWsUrl(
-        this.getWsBaseUrl(market, wsKey) + `/${symbols}`,
+        this.getWsBaseUrl(market, wsKey) + `/stream?streams=${symbols}`,
         wsKey,
         forceNewConnection
       );
