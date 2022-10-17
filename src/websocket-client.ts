@@ -139,6 +139,8 @@ function parseEventTypeFromMessage(parsedMsg?): string | undefined {
     return parsedMsg[0]?.e;
   }
 
+  if(Object.keys(parsedMsg))
+
   return;
 }
 
@@ -1375,7 +1377,7 @@ export class WebsocketClient extends EventEmitter {
       forceNewConnection?: boolean
     ): WebSocket {
       const streamName = 'ticker';
-      const wsKey = getWsKeyWithContext(market, streamName);
+      const wsKey = getWsKeyWithContext(market, streamName, 'all');
       return this.connectToWsUrl(
         this.getWsBaseUrl(market, wsKey) + `/stream?streams=${symbols}`,
         wsKey,

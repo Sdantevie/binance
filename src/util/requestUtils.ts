@@ -215,6 +215,11 @@ export function appendEventIfMissing(wsMsg: any, wsKey: WsKey) {
     return;
   }
 
+  if(wsKey.indexOf('all') !== -1) {
+    wsMsg.e = wsMsg.data.e;
+    return;
+  }
+
   if (wsKey.indexOf('bookTicker') !== -1) {
     wsMsg.e = 'bookTicker';
     return;
